@@ -5,7 +5,6 @@ class MyList
 
   def initialize(*list)
     @list = list
-    # puts(@list)
   end
 
   def each
@@ -18,5 +17,10 @@ end
 
 list = MyList.new(1, 2, 3, 4)
 
+puts list.all? { |a| a < 5 }
+puts list.all? { |a| a > 5 }
 
-puts(list.all? { |a| a < 3 })
+puts list.any? { |e| e == 2 }
+puts list.any? { |e| e == 5 }
+
+puts list.filter {|e| e.even?}

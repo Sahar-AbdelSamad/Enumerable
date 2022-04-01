@@ -1,14 +1,23 @@
 module MyEnumerable
-
   def all?
-    bool = true
+    boolean = true
     each { 
-      |n| 
-      if (yield n) {
-        bool = false 
-        # |n| bool = false unless yield n }
-      }
-    bool
+      |n| boolean = false unless yield n
+    }
+    boolean
   end
 
+  def any?
+    boolean = false
+    each {
+      |n| boolean = true if yield n
+    }
+    boolean
+  end
+
+  def filter
+    filteredArray = []
+    each { |n| filteredArray.push(n) if yield n}
+    filteredArray
+  end
 end
